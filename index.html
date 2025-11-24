@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 4px;
+            display: none;
+        }
+        #results p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Calculator</h1>
+        <button onclick="calculate()">Enter Numbers</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            // Ask user for two numbers
+            let x = prompt("Enter the first number:");
+            let y = prompt("Enter the second number:");
+            
+            // Convert to numbers
+            x = parseFloat(x);
+            y = parseFloat(y);
+            
+            // Check if inputs are valid numbers
+            if (isNaN(x) || isNaN(y)) {
+                alert("Please enter valid numbers!");
+                return;
+            }
+            
+            // Calculate sum and product
+            let sum = x + y;
+            let product = x * y;
+            
+            // Determine which is bigger
+            let comparison;
+            if (x > y) {
+                comparison = x + " is bigger than " + y;
+            } else if (y > x) {
+                comparison = y + " is bigger than " + x;
+            } else {
+                comparison = x + " is equal to " + y;
+            }
+            
+            // Display results
+            let resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = `
+                <p>The sum of ${x} and ${y} is ${sum}.</p>
+                <p>The product of ${x} and ${y} is ${product}.</p>
+                <p>${comparison}</p>
+            `;
+            resultsDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
